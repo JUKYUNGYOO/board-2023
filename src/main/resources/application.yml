@@ -1,0 +1,36 @@
+debug: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+logging:
+  level:
+    com.example.demo: debug
+    org.springframework.web.servlet: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/board
+    username: jukyung
+    password: test
+    driver-class-name: com.mysql:mysql-connector-j
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create
+      open-in-view: false
+      show-sql: true
+      properties:
+        hibernate.formal_sql: true
+        hibernate.default_batch_fetch_size: 100
+  h2:
+    console:
+      enabled: true
+  sql:
+    init:
+      mode: always
+---
+spring:
+   config.activate.on-profile: testdb
